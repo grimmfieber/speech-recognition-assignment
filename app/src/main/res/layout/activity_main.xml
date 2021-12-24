@@ -52,14 +52,28 @@
         android:layout_width="113dp"
         android:layout_height="0dp"
         android:layout_marginTop="54dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="136dp"
         android:text="Ses - Metin dönüştürücüsü"
         android:textAlignment="center"
         android:textColor="#FF0B44"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="93dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="403dp"
+        android:text="Arama yapmak için bir veya iki diyiniz."
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textColorHighlight="#CDDC39"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,16 +33,19 @@ public class MainActivity extends AppCompatActivity {
             //voice intentinden text arrayi eldesi
             ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             speechText.setText(result.get(0).toString()); // speectext'in textine resultı string olarak kaydediyoruz.
-            String x = "+905412188611";
-            String y = "+905412188611";
+
 
             if(result.get(0).equals("bir") || Integer.parseInt(result.get(0)) == 1 ){ //birse ekrana X'i arayacak
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", x, null)); //DIAL intenti initialize edilir.
-                startActivity(intent); //intent ile activity başlatılır
+                String number = "05412188611";
+                Uri call = Uri.parse("tel:" + number);
+                Intent callIntent1 = new Intent(Intent.ACTION_CALL, call);
+                startActivity(callIntent1);
             }
             else if(result.get(0).equals("iki") || Integer.parseInt(result.get(0)) == 2){ //ikiyse ekrana X basacak
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", y, null)); //DIAL intenti initialize edilir.
-                startActivity(intent); //intent ile activity başlatılır
+                String number = "05350224783";
+                Uri call = Uri.parse("tel:" + number);
+                Intent callIntent2 = new Intent(Intent.ACTION_CALL, call);
+                startActivity(callIntent2);
             }
             else{
                 indicator.setText("Bir veya iki demediniz.");
