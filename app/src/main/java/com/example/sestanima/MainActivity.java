@@ -3,6 +3,7 @@ package com.example.sestanima;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     TextView indicator;
 
 
+
     private static final int RECOGNIZER_RESULT = 1;
 
 
@@ -31,11 +33,19 @@ public class MainActivity extends AppCompatActivity {
             //voice intentinden text arrayi eldesi
             ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             speechText.setText(result.get(0).toString()); // speectext'in textine resultı string olarak kaydediyoruz.
-            if(result.get(0).equals("bir") || Integer.parseInt(result.get(0)) == 1 ){ //birse ekrana X basacak
-                indicator.setText("X");
+            String x = "+905412188611";
+            String y = "+905412188611";
+
+            if(result.get(0).equals("bir") || Integer.parseInt(result.get(0)) == 1 ){ //birse ekrana X'i arayacak
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", x, null)); //DIAL intenti initialize edilir.
+                startActivity(intent); //intent ile activity başlatılır
             }
             else if(result.get(0).equals("iki") || Integer.parseInt(result.get(0)) == 2){ //ikiyse ekrana X basacak
-                indicator.setText("O");
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", y, null)); //DIAL intenti initialize edilir.
+                startActivity(intent); //intent ile activity başlatılır
+            }
+            else{
+                indicator.setText("Bir veya iki demediniz.");
             }
         }
 
@@ -59,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH); //Kullanıcıdan konuşmasını isteyen
+                Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH); //Kullanıcıdan konuşmasını isteyen intent nesnesi
                 // ve bir speech recognizer aracılığıyla gönderecek bir intent initializationı
                 speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM); // dil modeli olacağını ve bunun free form olacağını belirtiyoruz
                 //diğer bir form seçimi web_search olabilirdi
